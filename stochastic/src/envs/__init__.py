@@ -6,8 +6,17 @@ import os
 def env_fn(env, **kwargs) -> MultiAgentEnv:
     return env(**kwargs)
 
+
+def gymma_fn(**kwargs) -> MultiAgentEnv:
+    assert "common_reward" in kwargs and "reward_scalarisation" in kwargs
+    from .gymma import GymmaWrapper
+
+    return GymmaWrapper(**kwargs)
+
+
 REGISTRY = {}
 REGISTRY["sc2"] = partial(env_fn, env=StarCraft2Env)
+REGISTRY["gymma"] = gymma_fn
 
 if sys.platform == "linux":
     os.environ.setdefault("SC2PATH",
