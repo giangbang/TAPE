@@ -26,8 +26,8 @@ class GymmaWrapper(MultiAgentEnv):
         time_limit,
         pretrained_wrapper,
         seed,
-        common_reward,
-        reward_scalarisation,
+        common_reward=True,
+        reward_scalarisation='sum',
         **kwargs,
     ):
         self._env = gym.make(f"{key}", **kwargs)
@@ -92,7 +92,8 @@ class GymmaWrapper(MultiAgentEnv):
 
         if isinstance(done, Iterable):
             done = all(done)
-        return self._obs, reward, done, truncated, self._info
+        # print("rewards: ", reward)
+        return reward, done, self._info
 
     def get_obs(self):
         """Returns all agent observations in a list"""

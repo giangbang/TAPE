@@ -8,7 +8,6 @@ def env_fn(env, **kwargs) -> MultiAgentEnv:
 
 
 def gymma_fn(**kwargs) -> MultiAgentEnv:
-    assert "common_reward" in kwargs and "reward_scalarisation" in kwargs
     from .gymma import GymmaWrapper
 
     return GymmaWrapper(**kwargs)

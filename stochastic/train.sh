@@ -1,6 +1,6 @@
 #!/bin/sh
 algo="offpg_smac"
-seed_max=2
+seed_max=1
 
 scenarios=( "lbforaging:Foraging-15x15-4p-3f-v3" "lbforaging:Foraging-15x15-3p-4f-v3" "lbforaging:Foraging-10x10-3p-3f-v3" )
 total_times=( 5_000_000 )

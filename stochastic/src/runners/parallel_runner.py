@@ -141,6 +141,9 @@ class ParallelRunner:
                     # Remaining data for this current timestep
                     post_transition_data["reward"].append((data["reward"],))
 
+                    # print("eps return: ", episode_returns[idx], ", data reward:", data["reward"])
+                    # print(len(data["reward"]), data["reward"][0].shape)
+                    # exit()
                     episode_returns[idx] += data["reward"]
                     episode_lengths[idx] += 1
                     if not test_mode:
